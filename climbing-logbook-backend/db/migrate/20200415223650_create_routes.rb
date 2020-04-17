@@ -9,6 +9,7 @@ class CreateRoutes < ActiveRecord::Migration[6.0]
     	t.datetime :climb_date
       t.string :image
       t.string :url
+      t.integer :times_climbed
       t.timestamps
     end
   end

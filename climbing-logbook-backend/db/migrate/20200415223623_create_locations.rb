@@ -6,6 +6,7 @@ class CreateLocations < ActiveRecord::Migration[6.0]
     	t.string :country
     	t.string :city
     	t.string :image
+        t.integer :climbs_total
     	t.timestamps
     end
   end
