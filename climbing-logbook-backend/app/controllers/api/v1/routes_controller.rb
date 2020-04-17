@@ -1,9 +1,9 @@
 class Api::V1::RoutesController < ApplicationController
-	before_action :set_location
+	# before_action :set_location
 
 	def index
 		if params[:location_id]
-			@routes = @location.routes
+			@routes = Location.find(params[:location_id]).routes
 			render json: @routes
 		else
 			@routes = Route.all
@@ -34,14 +34,14 @@ class Api::V1::RoutesController < ApplicationController
 		@route.destroy
 	end
 
-	def set_location
-		@location = Location.find(params[:account_id])
-	end
+	# def set_location
+	# 	@location = Location.find(params[:account_id])
+	# end
 
 	private
 
 	def route_params
-		params.require(:route).permit(:location_id, :name, :grade, :climbing_type, :notes, :climb_date, :image, :url. :times_climbed)
+		params.require(:route).permit(:location_id, :name, :grade, :climbing_type, :notes, :climb_date, :image, :url, :times_climbed)
 	end
 
 end

@@ -3,7 +3,7 @@ class Location < ApplicationRecord
 	validates :placename, presence: true
 
 	include ActiveModel::Dirty
-  	define_attribute_methods :location
+  	# define_attribute_methods :location
 
 
 	def update_climb_total(route)
