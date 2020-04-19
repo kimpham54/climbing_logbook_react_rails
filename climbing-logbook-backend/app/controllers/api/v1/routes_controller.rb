@@ -26,13 +26,21 @@ class Api::V1::RoutesController < ApplicationController
 		# @route = @location.routes.find_by(id: params[:id])
 		render json: @route
 		# /api/vi/routes/1
-
 	end
 
 	def destroy
 		@route = Route.find(params[:id])
 		@route.destroy
 	end
+
+
+	def update
+      @route = Route.find(params[:id])
+      @route.update(name: params["name"]["grade"])
+      @route.save
+      render json: @route
+    end
+    # TODO not done
 
 	# def set_location
 	# 	@location = Location.find(params[:account_id])
