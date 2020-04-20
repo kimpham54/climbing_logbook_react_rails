@@ -52,9 +52,9 @@ export default function locationsReducer(state = {
       return {...state, locations: locations}
 
 
-      case 'DELETE_ROUTE':
-      // something
-      return {...state, locations: locations}
+      // case 'DELETE_ROUTE':
+      // // something
+      // return {...state, locations: locations}
   
 
       case 'EDIT_ROUTE':

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 
 class RouteInput extends Component {
+ 
+ constructor(props) {
+    super(props);
 
-  state = {
+  this.state = {
     location_id: '',
     name:'',
     grade:'',
@@ -12,17 +15,21 @@ class RouteInput extends Component {
     image:'',
     url:'',
     times_climbed:''
-  }
+    };
+  };
 
-  handleOnChange = event => {
+
+  handleOnChange(event) {
+    console.log(event.target.name);
     this.setState({
       [event.target.name]: event.target.value,
+      // text: event.target.value,
     });
   }
 
-  handleOnSubmit = event => {
+  handleOnSubmit(event) {
     event.preventDefault();
-    this.props.addRoute(this.state);
+    this.props.addLocation(this.state)
     this.setState({
       location_id: '',
       name:'',
@@ -36,48 +43,68 @@ class RouteInput extends Component {
     });
   }
 
+
   render() {
     return (
      <div>
-        <form onSubmit={this.handleOnSubmit} >
-          <label>Add Route</label>
-          🌸<input
+        <form onSubmit={(event) => this.handleOnSubmit(event)} >
+          <input
             type="text"
             value={this.state.location_id}
-            onChange={this.handleOnChange} />
-          🌸<input
+            placeholder="location_id"
+            name="location_id"
+            onChange={(event) => this.handleOnChange(event)} />
+          <input
             type="text"
             value={this.state.name}
-            onChange={this.handleOnChange} />
-          🌸<input
+            placeholder="name"
+            name="name"
+            onChange={(event) => this.handleOnChange(event)} />
+          <input
             type="text"
             value={this.state.grade}
-            onChange={this.handleOnChange} />
+            placeholder="grade"
+            name="grade"
+            onChange={(event) => this.handleOnChange(event)} />
           <input
             type="text"
             value={this.state.climbing_type}
-            onChange={this.handleOnChange} />
+            placeholder="climbing type"
+            name="climbing_type"
+            onChange={(event) => this.handleOnChange(event)} />
           <input
             type="text"
             value={this.state.notes}
-            onChange={this.handleOnChange} />
+            placeholder="notes"
+            name="notes"
+            onChange={(event) => this.handleOnChange(event)} />
           <input
             type="text"
             value={this.state.climb_date}
-            onChange={this.handleOnChange} />
+            placeholder="climb date"
+            name="climb_date"
+            onChange={(event) => this.handleOnChange(event)} />
           <input
             type="text"
             value={this.state.image}
-            onChange={this.handleOnChange} />
+            placeholder="image url"
+            name="image"
+            onChange={(event) => this.handleOnChange(event)} />
           <input
             type="url"
             value={this.state.url}
-            onChange={this.handleOnChange} />
+            placeholder="url"
+            name="url"
+            onChange={(event) => this.handleOnChange(event)} />
           <input
             type="number"
             value={this.state.times_climbed}
-            onChange={this.handleOnChange} />
-          <input type="submit" />
+            placeholder="times climbed"
+            name="times_climbed"
+            onChange={(event) => this.handleOnChange(event)} />
+
+            <button>Submit</button>
+          
 
         </form>
       </div>

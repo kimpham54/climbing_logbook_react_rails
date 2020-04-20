@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import RoutesContainer from '../../containers/RoutesContainer'
 import LocationInput from './LocationInput'
 
+import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Accordion from 'react-bootstrap/Accordion'
+import Card from 'react-bootstrap/Card'
+import CardGroup from 'react-bootstrap/CardGroup'
+
+
 class Location extends Component {
 
   handleOnClick() {
@@ -21,26 +31,48 @@ class Location extends Component {
 console.log(this.props);
 
     return (
+
       <div>
-        <li>
-          {location.placename}
+<CardGroup style={{ width: '40rem' }}>
+  <Card>
+    <Card.Img style={{ width: '30rem' }} variant="top" src={location.image} />
+    <Card.Body>
+      <Card.Title>{location.placename}</Card.Title>
+      <Card.Text>
+          Cooordinates: {location.coordinates}
           <br/>
-          {location.coordinates}
+          Country: {location.country}
           <br/>
-          {location.country}
+          City: {location.city}
           <br/>
-          {location.city}
+          Total Times Climbed: {location.climbs_total}
           <br/>
-          {location.image}
-          <br/>
-          {location.climbs_total}
-          <br/>
-          <button onClick={() => this.handleOnClick()}> X </button>
-          <button onClick={() => this.handleOnClick()}> Edit </button>
-          <LocationInput addLocation={(data)=> this.handleEdit(data) } />
-          <RoutesContainer location={location}/>
-        </li>
-      </div>
+      </Card.Text>
+
+          <Accordion>
+            <Card style={{ width: '30rem' }}>
+              <Card.Header>
+                <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                <Button variant="info"> Edit </Button>
+                </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body> 
+                <LocationInput addLocation={(data)=> this.handleEdit(data) } />
+                <button onClick={() => this.handleOnClick()}> Remove </button>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
+  
+    </Card.Body>
+    <Card.Footer>
+      <RoutesContainer location={location}/>
+    </Card.Footer>
+
+  </Card>
+  </CardGroup>
+  </div>
     );
   }
 };

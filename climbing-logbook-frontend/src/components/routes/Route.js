@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 
+
+import Image from 'react-bootstrap/Image';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 class Route extends Component {
 
 
   handleOnClick = () => {
-    this.props.deleteRoute(this.props.route.id)
+    this.props.deleteRoute(this.props.route.location_id, this.props.route.id)
+    console.log(this.props.route.location_id, this.props.route.id)
   }
+
 
   render() {
     return (
@@ -29,7 +37,13 @@ class Route extends Component {
           {this.props.route.climb_date}
         </li>
         <li>
-          {this.props.route.image}
+          <Container>
+          <Row>
+           <Col xs={5} md={5}>
+          <Image src={this.props.route.image} fluid />
+          </Col>
+          </Row>
+          </Container>
         </li>
         <li>
           {this.props.route.url}
@@ -37,7 +51,7 @@ class Route extends Component {
         <li>
           {this.props.route.times_climbed}
         </li>
-        <button onClick={this.handleOnClick}> x </button>
+        <button onClick={this.handleOnClick}> Remove </button>
       </div>
     );
   }

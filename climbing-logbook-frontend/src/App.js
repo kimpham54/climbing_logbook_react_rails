@@ -1,6 +1,6 @@
 import React from 'react';
 // import logo from './logo.svg';
-// import './App.css';
+// import './archived-App.css';
 import { connect } from 'react-redux';
 import { locations } from './actions/locations';
 import LocationsContainer from './containers/LocationsContainer';

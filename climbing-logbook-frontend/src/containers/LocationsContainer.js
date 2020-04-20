@@ -21,6 +21,7 @@ class LocationsContainer extends React.Component {
       <div>
         <NavBar/>
         <LocationInput addLocation={this.props.addLocation}/>
+        <br/>
         <Locations
           locations={this.props.locations}
           deleteLocation={this.props.deleteLocation}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from 'react-bootstrap/Button';
 
 class LocationInput extends Component {
 
@@ -17,6 +18,7 @@ class LocationInput extends Component {
 
 
   handleOnChange(event) {
+    console.log(event.target.name);
     this.setState({
       [event.target.name]: event.target.value,
       // text: event.target.value,
@@ -96,7 +98,7 @@ class LocationInput extends Component {
 
           <br/>
 
-          <input type="submit" />
+          <button>Submit</button>
         </form>
       </div>
     );

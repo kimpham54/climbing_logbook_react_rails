@@ -1,4 +1,5 @@
 import {getLocations} from '../actions/getLocations'
+
 export const addLocation = (data) => {
 
   return (dispatch) => {

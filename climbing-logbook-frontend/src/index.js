@@ -8,6 +8,8 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import locationsReducer from './reducers/locationsReducer';
+import 'bootstrap/dist/css/bootstrap.css';
+
 // import routesReducer from './reducers/routesReducer';
 
 // const rootReducer = combineReducers({
