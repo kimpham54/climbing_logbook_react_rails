@@ -1,3 +1,4 @@
+import {getLocations} from '../actions/getLocations'
 export const addLocation = (data) => {
 
   return (dispatch) => {
@@ -21,8 +22,7 @@ export const deleteLocation = (locationId) => {
     return fetch(`http://localhost:3000/api/v1/locations/${locationId}`, {
       method: 'DELETE'
     })
-    .then(response => response.json())
-    .then(location => dispatch({type: 'DELETE_LOCATION', payload: location}))
+    .then(location => getLocations()(dispatch))
   }
 }
 

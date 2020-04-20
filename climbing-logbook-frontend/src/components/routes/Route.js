@@ -9,33 +9,33 @@ class Route extends Component {
 
   render() {
     return (
-      <div>
+      <div> 
         <li>
-          🌼{this.props.route.location_id}
+          {this.props.route.location_id}
         </li>
         <li>
-          🌼{this.props.route.name}
+          {this.props.route.name}
         </li>
         <li>
-          🌼{this.props.route.grade}
+          {this.props.route.grade}
         </li>
         <li>
-          🌼{this.props.route.climbing_type}
+          {this.props.route.climbing_type}
         </li>
         <li>
-          🌼{this.props.route.notes}
+          {this.props.route.notes}
         </li>
         <li>
-          🌼{this.props.route.climb_date}
+          {this.props.route.climb_date}
         </li>
         <li>
-          🌼{this.props.route.image}
+          {this.props.route.image}
         </li>
         <li>
-          🌼{this.props.route.url}
+          {this.props.route.url}
         </li>
         <li>
-          🌼{this.props.route.times_climbed}
+          {this.props.route.times_climbed}
         </li>
         <button onClick={this.handleOnClick}> x </button>
       </div>

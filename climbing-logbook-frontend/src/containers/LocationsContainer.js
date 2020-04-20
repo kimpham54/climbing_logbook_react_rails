@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Route, Switch} from 'react-router-dom'
 // can i import Route as another name to avoid confusion
 import {getLocations} from '../actions/getLocations'
+import {addLocation, deleteLocation, editLocation} from '../actions/locations'
 import Locations from '../components/locations/Locations'
 import Location from '../components/locations/Location'
 import LocationInput from '../components/locations/LocationInput'
@@ -15,6 +16,7 @@ class LocationsContainer extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <NavBar/>
@@ -22,6 +24,7 @@ class LocationsContainer extends React.Component {
         <Locations
           locations={this.props.locations}
           deleteLocation={this.props.deleteLocation}
+          editLocation={this.props.editLocation}
         />
       </div>
     );
@@ -31,9 +34,10 @@ class LocationsContainer extends React.Component {
 const mapStateToProps = state => ({ locations: state.locations })
 
 const mapDispatchToProps = dispatch => ({
-  getLocations: locations => dispatch({type: 'GET_LOCATIONS', locations}),
-  addLocation: text => dispatch({type: 'ADD_LOCATION', text}),
-  deleteLocation: id => dispatch({type: 'DELETE_LOCATION', id})
+  getLocations: () => getLocations()(dispatch),
+  addLocation: data => addLocation(data)(dispatch),
+  deleteLocation: id => deleteLocation(id)(dispatch),
+  editLocation: data => editLocation(data)(dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationsContainer)

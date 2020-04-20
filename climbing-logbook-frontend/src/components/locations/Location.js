@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RoutesContainer from '../../containers/RoutesContainer'
+import LocationInput from './LocationInput'
 
 class Location extends Component {
 
@@ -7,8 +8,17 @@ class Location extends Component {
     this.props.deleteLocation(this.props.location.id);
   }
 
+  handleEdit(data){
+    data.id = this.props.location.id;
+    this.props.editLocation(data);
+  }
+
+
+
   render() {
     const { location } = this.props;
+
+console.log(this.props);
 
     return (
       <div>
@@ -26,6 +36,8 @@ class Location extends Component {
           {location.climbs_total}
           <br/>
           <button onClick={() => this.handleOnClick()}> X </button>
+          <button onClick={() => this.handleOnClick()}> Edit </button>
+          <LocationInput addLocation={(data)=> this.handleEdit(data) } />
           <RoutesContainer location={location}/>
         </li>
       </div>

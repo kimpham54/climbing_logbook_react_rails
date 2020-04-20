@@ -10,40 +10,57 @@ export default function locationsReducer(state = {
    
     case 'GET_LOCATIONS':
       return {locations: action.payload}
+
+    // case 'GET_ROUTES':
+    //   return {routes: action.payload}
    
     case 'ADD_LOCATION':
-      return {...state, locations: [...state.locations, action.payload]}
+    return {
+      ...state,
+      locations: [ ...state.locations, action.payload]
+    }
    
-    case 'ADD_ROUTE':
-      let locations = state.locations.map(location => {
-        if (location.id === action.payload.id) {
-          return action.payload
-        } else {
-          return location
-        }
-      })
-      return {...state, locations: locations}
-   
-    case 'DELETE_ROUTE':
-      let locationsTwo = state.locations.map(location => {
-        if (location.id === action.payload.id) {
-          return action.payload
-        } else {
-          return location
-        }
-      })
-      return {...state, locations: locationsTwo}
+    // case 'DELETE_LOCATION':
+    //   let locationsTwo = state.locations.map(location => {
+    //     if (location.id == action.payload.id) {
+    //       return action.payload
+    //     } else {
+    //       return location
+    //     }
+    //   })
+    //   return {...state, locations: locationsTwo}
    
     case 'EDIT_LOCATION':
       let locationsThree = state.locations.map(location => {
-        if (location.id === action.payload.id) {
+        if (location.id == action.payload.id) {
           return action.payload
         } else {
           return location
         }
       })
       return {...state, locations: locationsThree}
+
+
+      case 'ADD_ROUTE':
+      let locations = state.locations.map(location => {
+        if (location.id == action.payload.id) {
+          return action.payload
+        } else {
+          return location
+        }
+      })
+      return {...state, locations: locations}
+
+
+      case 'DELETE_ROUTE':
+      // something
+      return {...state, locations: locations}
   
+
+      case 'EDIT_ROUTE':
+      // something
+      return {...state, locations: locations}
+
     default:
       return state
   }

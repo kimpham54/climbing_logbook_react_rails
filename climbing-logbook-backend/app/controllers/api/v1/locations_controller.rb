@@ -25,6 +25,13 @@ class Api::V1::LocationsController < ApplicationController
 		@location.destroy
 	end
 
+	def update
+      @location = Location.find(params[:id])
+      @location.update(location_params)
+      @location.save
+      render json: @location
+    end
+
 	private
 
 	def location_params

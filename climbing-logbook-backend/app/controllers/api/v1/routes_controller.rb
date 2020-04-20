@@ -36,7 +36,7 @@ class Api::V1::RoutesController < ApplicationController
 
 	def update
       @route = Route.find(params[:id])
-      @route.update(name: params["name"]["grade"])
+      @route.update(route_params)
       @route.save
       render json: @route
     end

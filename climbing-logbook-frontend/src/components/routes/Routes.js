@@ -6,7 +6,13 @@ class Routes extends Component {
   render() {
 
     const { routes, locationId, deleteRoute } = this.props;
-    const associatedRoutes = routes.filter(route => route.locationId === locationId);
+    console.log(this.props);
+    const associatedRoutes = routes.filter( route => { 
+      // console.log(routes, route.location_id, locationId); 
+      return route.location_id == locationId
+    });
+    console.log(associatedRoutes)
+
     
     const routeList = associatedRoutes.map((route, index) => {
       return <Route key={index} route={route} deleteRoute={deleteRoute} />
