@@ -1,28 +1,26 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {deleteTransaction} from '../actions/deleteTransaction'
+import React, { Component } from 'react';
+import Route from './Route';
 
-class Transactions extends React.Component {
+class Routes extends Component {
 
-state = {}
+  render() {
 
- handleDelete = (transaction) => {
-    this.props.deleteTransaction(transaction.id, transaction.account_id)
-  }
+    const { routes, locationId, deleteRoute } = this.props;
+    const associatedRoutes = routes.filter(route => route.locationId === locationId);
+    
+    const routeList = associatedRoutes.map((route, index) => {
+      return <Route key={index} route={route} deleteRoute={deleteRoute} />
+    })
 
-vote = (id) => {
-  this.state[id] ? this.setState({[id]: this.state[id] += 1}) : this.setState({[id]: 1})
-}
-
-render() {
-  return (
+    return (
       <div>
-        {this.props.transactions && this.props.transactions.map(transaction =>
-          <li key={transaction.id}>{transaction.date} - {transaction.kind} - {transaction.amount}  <button onClick={() => this.vote(transaction.id)}>Vote {this.state[transaction.id] ? this.state[transaction.id] : 0}</button><button onClick={() => this.handleDelete(transaction)}>Delete</button></li>
-        )}
+        <ul>
+          {routeList}
+        </ul>
       </div>
-    )
+    );
   }
-}
 
-export default connect(null, {deleteTransaction})(Transactions)
+};
+
+export default Routes;

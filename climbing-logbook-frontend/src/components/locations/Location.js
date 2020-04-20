@@ -1,29 +1,36 @@
-import React from 'react'
-import {Redirect} from 'react-router-dom'
-import AccountEdit from './AccountEdit'
+import React, { Component } from 'react';
+import RoutesContainer from '../../containers/RoutesContainer'
 
-import TransactionsContainer from '../containers/TransactionsContainer'
+class Location extends Component {
 
-const Account = (props) => {
+  handleOnClick() {
+    this.props.deleteLocation(this.props.location.id);
+  }
 
-  console.log(props)
-  // let account = props.accounts[props.match.params.id - 1]
-  let account = props.accounts.filter(account => account.id == props.match.params.id)[0]
+  render() {
+    const { location } = this.props;
 
-  console.log(account)
-  return (
+    return (
+      <div>
+        <li>
+          {location.placename}
+          <br/>
+          {location.coordinates}
+          <br/>
+          {location.country}
+          <br/>
+          {location.city}
+          <br/>
+          {location.image}
+          <br/>
+          {location.climbs_total}
+          <br/>
+          <button onClick={() => this.handleOnClick()}> X </button>
+          <RoutesContainer location={location}/>
+        </li>
+      </div>
+    );
+  }
+};
 
-    <div>
-      <h2>
-        {account ? account.name : null} - {account ? account.balance : null}
-      </h2>
-      <TransactionsContainer account={account}/><br/>
-      <h4>Edit Account</h4>
-      <AccountEdit account={account}/>
-    </div>
-  )
-
-
-}
-
-export default Account
+export default Location;

@@ -1,47 +1,88 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {addTransaction} from '../actions/addTransaction'
+import React, { Component } from 'react';
 
-class TransactionInput extends React.Component {
+class RouteInput extends Component {
 
   state = {
-    kind: 'deposit',
-    amount: ''
+    location_id: '',
+    name:'',
+    grade:'',
+    climbing_type:'',
+    notes:'',
+    climb_date:'',
+    image:'',
+    url:'',
+    times_climbed:''
   }
 
-  handleChange = (event) => {
+  handleOnChange = event => {
     this.setState({
-      [event.target.name]: event.target.value
-    })
+      [event.target.name]: event.target.value,
+    });
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault()
-    this.props.addTransaction(this.state, this.props.account.id)
+  handleOnSubmit = event => {
+    event.preventDefault();
+    this.props.addRoute(this.state);
     this.setState({
-      kind: 'deposit',
-      amount: ''
-    })
+      location_id: '',
+      name:'',
+      grade:'',
+      climbing_type:'',
+      notes:'',
+      climb_date:'',
+      image:'',
+      url:'',
+      times_climbed:''
+    });
   }
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>Transaction Type:</label>
-          <select name="kind" value={this.state.kind} onChange={this.handleChange}>
-            <option>deposit</option>
-            <option>withdraw</option>
-          </select>
-          <label>Transaction Amount:</label>
-          <input type="text" name="amount" value={this.state.amount} onChange={this.handleChange}/>
-          <input type="submit"/>
+     <div>
+        <form onSubmit={this.handleOnSubmit} >
+          <label>Add Route</label>
+          🌸<input
+            type="text"
+            value={this.state.location_id}
+            onChange={this.handleOnChange} />
+          🌸<input
+            type="text"
+            value={this.state.name}
+            onChange={this.handleOnChange} />
+          🌸<input
+            type="text"
+            value={this.state.grade}
+            onChange={this.handleOnChange} />
+          <input
+            type="text"
+            value={this.state.climbing_type}
+            onChange={this.handleOnChange} />
+          <input
+            type="text"
+            value={this.state.notes}
+            onChange={this.handleOnChange} />
+          <input
+            type="text"
+            value={this.state.climb_date}
+            onChange={this.handleOnChange} />
+          <input
+            type="text"
+            value={this.state.image}
+            onChange={this.handleOnChange} />
+          <input
+            type="url"
+            value={this.state.url}
+            onChange={this.handleOnChange} />
+          <input
+            type="number"
+            value={this.state.times_climbed}
+            onChange={this.handleOnChange} />
+          <input type="submit" />
+
         </form>
       </div>
-    )
-
+    );
   }
-}
+};
 
-
-export default connect(null, {addTransaction})(TransactionInput)
+export default RouteInput;

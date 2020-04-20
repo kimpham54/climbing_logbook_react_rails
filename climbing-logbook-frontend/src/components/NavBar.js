@@ -1,15 +1,17 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Route, Link, BrowserRouter} from 'react-router-dom'
 
 const NavBar = (props) => {
 
   return (
     <div>
-      <Link to='/accounts' style={{paddingRight: '10px'}}>Accounts  </Link>
-      <Link to='/accounts/new'> Add Account</Link>
+    <BrowserRouter>
+      <Link to='/locations' style={{paddingRight: '10px'}}>Locations  </Link>
+      <Link to='/locations/new'> Add Location</Link>
+    </BrowserRouter>
     </div>
 
   )
 }
 
-export default NavBar
+export default NavBar;

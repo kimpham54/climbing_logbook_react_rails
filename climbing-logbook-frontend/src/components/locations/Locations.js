@@ -1,18 +1,29 @@
-import React from 'react'
+import React, { Component } from 'react';
 import {Route, Link} from 'react-router-dom'
-import Account from './Account'
+import Location from './Location'
 
-const Accounts = (props) => {
 
-  return (
-    <div>
-      {props.accounts.map(account =>
-        <li key={account.id}>
-          <Link to={`/accounts/${account.id}`}>{account.name} - ${account.balance}</Link>
-        </li> )}
-    </div>
+class Locations extends Component{
 
-  )
-}
+  render() {
+    const { locations, deleteLocation } = this.props;
+    const locationList = locations.map(location => {
+      return (
+        <Location
+            key={location.id}
+            location={location}
+            deleteLocation={deleteLocation}
+        />
+        
+      )
+    });
 
-export default Accounts
+    return(
+      <ul>
+        {locationList}
+      </ul>
+    );
+  }
+};
+
+export default Locations;

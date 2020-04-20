@@ -11,6 +11,7 @@ class CreateRoutes < ActiveRecord::Migration[6.0]
       t.string :url
       t.integer :times_climbed
       t.timestamps
+      # t.belongs_to :location, index:true, foreign_key:true
     end
   end
 end
