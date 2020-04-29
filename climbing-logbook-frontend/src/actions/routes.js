@@ -36,8 +36,9 @@ export const deleteRoute = (locationid, routeid) => {
 // not using locationid, http://localhost:3000/api/v1/locations/${locationid}/routes/${routeid}
 
 export const editRoute = (data) => {
+  console.log(data)
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/locations/${data.locationId}/routes/${data.routeId}`, {
+    fetch(`http://localhost:3000/api/v1/locations/${data.locationId}/routes/${data.id}`, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -46,7 +47,7 @@ export const editRoute = (data) => {
       body: JSON.stringify(data)
     })
     .then(response => response.json())
-    .then(location => dispatch({type: 'EDIT_LOCATION', payload: location}))
+    .then(route => dispatch({type: 'EDIT_ROUTE', payload: route}))
   }
 }
 

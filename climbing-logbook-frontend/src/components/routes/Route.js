@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import RouteInput from './RouteInput'
+
 
 import Image from 'react-bootstrap/Image';
 import Container from 'react-bootstrap/Container'
@@ -14,27 +16,32 @@ class Route extends Component {
     console.log(this.props.route.location_id, this.props.route.id)
   }
 
+  handleEdit(data){
+    data.id = this.props.route.id;
+    this.props.editRoute(data);
+  }
+
 
   render() {
     return (
       <div> 
         <li>
-          {this.props.route.location_id}
+          ID: {this.props.route.location_id}
         </li>
         <li>
-          {this.props.route.name}
+          NAME: {this.props.route.name}
         </li>
         <li>
-          {this.props.route.grade}
+          GRADE: {this.props.route.grade}
         </li>
         <li>
-          {this.props.route.climbing_type}
+          TYPE: {this.props.route.climbing_type}
         </li>
         <li>
-          {this.props.route.notes}
+          NOTES: {this.props.route.notes}
         </li>
         <li>
-          {this.props.route.climb_date}
+          DATE: {this.props.route.climb_date}
         </li>
         <li>
           <Container>
@@ -46,11 +53,14 @@ class Route extends Component {
           </Container>
         </li>
         <li>
-          {this.props.route.url}
+          LINK: {this.props.route.url}
         </li>
         <li>
-          {this.props.route.times_climbed}
+          TIMES CLIMBED: {this.props.route.times_climbed}
         </li>
+        <h5>Edit</h5>
+        <RouteInput addRoute={(data)=> this.handleEdit(data) } /> 
+        <br/>
         <button onClick={this.handleOnClick}> Remove </button>
       </div>
     );

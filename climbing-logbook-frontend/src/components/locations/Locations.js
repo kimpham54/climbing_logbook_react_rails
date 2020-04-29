@@ -12,7 +12,7 @@ class Locations extends Component{
     const locationList = locations.map(location => {
       return (
 
-
+// pass down props to location chaining
         <Location
             key={location.id}
             location={location}

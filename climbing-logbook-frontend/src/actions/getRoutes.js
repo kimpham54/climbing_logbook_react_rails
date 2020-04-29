@@ -1,3 +1,4 @@
+// not in use
 export function getRoutes() {
 console.log('test')
   return (dispatch) => {

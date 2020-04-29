@@ -13,26 +13,32 @@ class LocationsContainer extends React.Component {
 
   componentDidMount() {
     this.props.getLocations();
+    console.log("getlocations");
   }
+
 
   render() {
     console.log(this.props);
+    console.log("render container");
     return (
       <div>
-        <NavBar/>
-        <BrowserRouter>
-        <Switch>
-        <Route path='/locations/new' render={(routeProps) =>
+       
+      <BrowserRouter>
+      <Link to='/locations' style={{paddingRight: '10px'}}>Locations</Link>
+      <Link to='/locations/new'>Add Location</Link>
+
+        <Route exact path='/locations/new' render={(routeProps) =>
         <LocationInput {...routeProps}
         addLocation={this.props.addLocation}/> }/>
-        <Route path='/locations/' render={(routeProps) =>
+        <Route exact path='/locations' render={(routeProps) =>
+          <div>
           <Locations  {...routeProps}
           locations={this.props.locations}
           deleteLocation={this.props.deleteLocation}
           editLocation={this.props.editLocation}
-        />
+        /></div>
         } />
-        </Switch>
+        
         </BrowserRouter>
       </div>
     );

@@ -57,6 +57,7 @@ class RoutesContainer extends Component {
                   routes={this.props.location.routes}
                   locationId={this.props.location.id}
                   deleteRoute={this.props.deleteRoute}
+                  editRoute={this.props.editRoute}
                 />
 
                 </Card.Body>
@@ -81,9 +82,9 @@ const mapDispatchToProps = dispatch => ({
   
   // addRoute: route => dispatch({type: 'ADD_ROUTE', route}),
   addRoute: routedata => addRoute(routedata)(dispatch),
-  deleteRoute: (data, data2) => deleteRoute(data, data2)(dispatch)
+  deleteRoute: (data, data2) => deleteRoute(data, data2)(dispatch),
   // dispatch({type: 'DELETE_ROUTE', id})
-  // editRoute: data => editRoute(data)(dispatch)
+  editRoute: (data) => editRoute(data)(dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoutesContainer)

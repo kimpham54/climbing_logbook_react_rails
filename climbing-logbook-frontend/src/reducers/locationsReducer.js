@@ -58,8 +58,34 @@ export default function locationsReducer(state = {
   
 
       case 'EDIT_ROUTE':
-      // something
-      return {...state, locations: locations}
+      console.log(action.payload)
+      console.log(state.locations)
+      let selectedLocation = state.locations.find(location => {
+        if (location.id == action.payload.location_id) {
+          console.log(location.routes)
+          return location.routes}})
+
+      console.log(selectedLocation)
+      let selectedRoute = selectedLocation.routes.find(route => {
+            console.log(route.id, action.payload.id)
+            if (route.id == action.payload.id) 
+              { 
+                return true 
+              }})
+      console.log(selectedRoute)
+
+      selectedRoute.climb_date = action.payload.climb_date
+      selectedRoute.climbing_type = action.payload.climbing_type
+      selectedRoute.grade = action.payload.grade
+      selectedRoute.image = action.payload.image
+      selectedRoute.name = action.payload.name
+      selectedRoute.notes = action.payload.notes
+      selectedRoute.times_climbed = action.payload.times_climbed
+      selectedRoute.url = action.payload.url
+
+      return {...state}
+
+
 
     default:
       return state

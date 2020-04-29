@@ -15,7 +15,11 @@ class Routes extends Component {
 
     
     const routeList = associatedRoutes.map((route, index) => {
-      return <Route key={index} route={route} deleteRoute={deleteRoute} />
+      return <Route 
+      key={index} 
+      route={route} 
+      deleteRoute={deleteRoute}
+      editRoute={this.props.editRoute} />
     })
 
     return (
