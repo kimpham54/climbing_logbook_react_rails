@@ -15,6 +15,8 @@ class Api::V1::RoutesController < ApplicationController
 		@route = Route.new(route_params)
 		# @route = @location.routes.new(route_params)
 		if @route.save
+		@location = Location.find(params[:location_id])
+		@location.update_climb_total(@route)
 			render json: @route
 		else
 			render json: {error: 'Error creating route'}
@@ -40,10 +42,9 @@ class Api::V1::RoutesController < ApplicationController
       @route.save
       render json: @route
     end
-    # TODO not done
 
 	# def set_location
-	# 	@location = Location.find(params[:account_id])
+	# 	@location = Location.find(params[:location_id])
 	# end
 
 	private

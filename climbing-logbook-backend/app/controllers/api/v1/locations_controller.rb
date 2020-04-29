@@ -7,6 +7,7 @@ class Api::V1::LocationsController < ApplicationController
 	def create
 		@location = Location.new(location_params)
 		if @location.save
+			# @location.initial_climb_total(params[:id])
 			render json: @location
 		else
 			render json: {error: 'Error creating location'}

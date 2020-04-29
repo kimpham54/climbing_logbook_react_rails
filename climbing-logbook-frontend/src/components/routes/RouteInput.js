@@ -6,7 +6,7 @@ class RouteInput extends Component {
     super(props);
 
   this.state = {
-    location_id: '',
+    location_id: this.props.routelocationId,
     name:'',
     grade:'',
     climbing_type:'',
@@ -20,7 +20,6 @@ class RouteInput extends Component {
 
 
   handleOnChange(event) {
-    console.log(event.target.name);
     this.setState({
       [event.target.name]: event.target.value,
       // text: event.target.value,
@@ -28,10 +27,11 @@ class RouteInput extends Component {
   }
 
   handleOnSubmit(event) {
+    console.log(this.props)
     event.preventDefault();
-    this.props.addLocation(this.state)
+    this.props.addRoute(this.state)
     this.setState({
-      location_id: '',
+      location_id: this.props.routelocationId,
       name:'',
       grade:'',
       climbing_type:'',
@@ -50,9 +50,9 @@ class RouteInput extends Component {
         <form onSubmit={(event) => this.handleOnSubmit(event)} >
           <input
             type="text"
-            value={this.state.location_id}
-            placeholder="location_id"
-            name="location_id"
+            value={this.props.routelocationId}
+            placeholder={this.props.routelocationId}
+            name="name"
             onChange={(event) => this.handleOnChange(event)} />
           <input
             type="text"

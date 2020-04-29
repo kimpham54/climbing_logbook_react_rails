@@ -8,8 +8,8 @@ const NavBar = (props) => {
   return (
     <div>
     <BrowserRouter>
-      <Link to='/locations' style={{paddingRight: '10px'}}>Locations  </Link>
-      <Link to='/locations/new'> Add Location</Link>
+      <Link to='/locations' style={{paddingRight: '10px'}}>Locations</Link>
+      <Link to='/locations/new'>Add Location</Link>
     </BrowserRouter>
 
 

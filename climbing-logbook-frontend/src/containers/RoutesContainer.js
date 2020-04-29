@@ -34,7 +34,7 @@ class RoutesContainer extends Component {
 
                 <RouteInput
                   addRoute={this.props.addRoute}
-                  locationId={this.props.location.id}
+                  routelocationId={this.props.location.id}
                 />
 
                 </Card.Body>

@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 			resources :locations
 
 
-			resources :locations, only: [:index, :index] do
-				resources :routes, only: [:show, :index, :update]
+			resources :locations, only: [:index] do
+				resources :routes, only: [:show, :index, :update, :create]
 			end
 		end
 	end

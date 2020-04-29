@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Route, Switch} from 'react-router-dom'
+import {BrowserRouter, Route, Switch, Link} from 'react-router-dom'
 // can i import Route as another name to avoid confusion
 import {getLocations} from '../actions/getLocations'
 import {addLocation, deleteLocation, editLocation} from '../actions/locations'
@@ -12,7 +12,7 @@ import NavBar from '../components/NavBar'
 class LocationsContainer extends React.Component {
 
   componentDidMount() {
-    this.props.getLocations()
+    this.props.getLocations();
   }
 
   render() {
@@ -20,13 +20,20 @@ class LocationsContainer extends React.Component {
     return (
       <div>
         <NavBar/>
-        <LocationInput addLocation={this.props.addLocation}/>
-        <br/>
-        <Locations
+        <BrowserRouter>
+        <Switch>
+        <Route path='/locations/new' render={(routeProps) =>
+        <LocationInput {...routeProps}
+        addLocation={this.props.addLocation}/> }/>
+        <Route path='/locations/' render={(routeProps) =>
+          <Locations  {...routeProps}
           locations={this.props.locations}
           deleteLocation={this.props.deleteLocation}
           editLocation={this.props.editLocation}
         />
+        } />
+        </Switch>
+        </BrowserRouter>
       </div>
     );
   }
@@ -42,15 +49,3 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LocationsContainer)
-
-// TODO three parameters here OK?
-// TODO need a mapdispatchtoprops
-// add updateLocation
-
-
-
-            // <Switch>
-            //   <Route path='/locations/new' component={LocationInput}/>
-            //   <Route path='/locations/:id' render={(routerProps) => <Location {...routerProps} locations={this.props.locations}/>}/>
-            //   <Route path='/locations' render={(routerProps) => <Locations {...routerProps} locations={this.props.locations}/>}/>
-            // </Switch>

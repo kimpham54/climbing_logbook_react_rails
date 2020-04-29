@@ -1,13 +1,14 @@
 import {getLocations} from '../actions/getLocations'
 
-export const addRoute = (route, locationId) => {
+export const addRoute = (data) => {
+  console.log(data)
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/locations/${locationId}/routes`, {
+    fetch(`http://localhost:3000/api/v1/locations/${data.location_id}/routes`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(route)
+      body: JSON.stringify(data)
     })
     .then(response => response.json())
     .then(location => {
@@ -32,7 +33,7 @@ export const deleteRoute = (locationid, routeid) => {
     .then(location => getLocations()(dispatch))
   }
 }
-// http://localhost:3000/api/v1/locations/${locationid}/routes/${routeid}
+// not using locationid, http://localhost:3000/api/v1/locations/${locationid}/routes/${routeid}
 
 export const editRoute = (data) => {
   return (dispatch) => {

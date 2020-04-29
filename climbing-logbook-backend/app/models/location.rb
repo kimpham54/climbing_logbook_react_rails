@@ -5,14 +5,29 @@ class Location < ApplicationRecord
 	include ActiveModel::Dirty
   	# define_attribute_methods :location
 
+  	def initial_seed_climb_total(id)
+  		@location = Location.find(id)
+  		@location.routes.each do |map|
+  			@location.climbs_total += map.times_climbed
+  		end
+  		self.climbs_total = route.times_climbed
+		self.save
+  	end
+		# singlelocation = Location.find(1)
+		# singlelocation.routes.each do |route|
+		# singlelocation.climbs_total += route.times_climbed
+		# end
 
 	def update_climb_total(route)
 		# on creation of a route, get all routes from that location and re-tally values
-		if route.location_id == self.id
-			 self.climbs_total = self.climbs_total + route.times_climbed
+		self.climbs_total = self.climbs_total + route.times_climbed
+		self.save
+		puts "was climbed and now times_climbed #{route.times_climbed_was} #{route.times_climbed}"
+		# if route.location_id == self.id
+		# 	 self.climbs_total = self.climbs_total + route.times_climbed + 50
 			 # TODO WORK on the formula here. what if someone adds some random number. or make this field unchangeable after
-			 self.save
-			end
+			 # self.save
+			# end
 	end
 
 
