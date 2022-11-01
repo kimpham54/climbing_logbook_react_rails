@@ -6,3 +6,10 @@
 
 climbing-logbook-backend
 climbing-logbook-frontend
+
+* in backend bundle install, rails s
+* in frontend npm start
+* in frontend npm install, then npm start
+* make sure you have ruby, rails, node installed
+* mimemagic is deprecated => remove Gemfile and create new one with bundle install
+* export NODE_OPTIONS=--openssl-legacy-provider in frontend side then npm start

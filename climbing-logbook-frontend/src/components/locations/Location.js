@@ -18,7 +18,7 @@ class Location extends Component {
     this.props.deleteLocation(this.props.location.id);
   }
 
-  handleEdit(data){
+  handleEdit(data) {
     data.id = this.props.location.id;
     this.props.editLocation(data);
   }
@@ -27,52 +27,58 @@ class Location extends Component {
 
   render() {
     const { location } = this.props;
+    const divStyle = {
+      backgroundColor: "fff",
+      padding: "10px"
+    };
 
-console.log(this.props);
+    console.log(this.props);
 
     return (
 
-      <div>
-<CardGroup style={{ width: '40rem' }}>
-  <Card>
-    <Card.Img style={{ width: '30rem' }} variant="top" src={location.image} />
-    <Card.Body>
-      <Card.Title>{location.placename}</Card.Title>
-      <Card.Text>
-          Cooordinates: {location.coordinates}
-          <br/>
-          Country: {location.country}
-          <br/>
-          City: {location.city}
-          <br/>
-          Total Times Climbed: {location.climbs_total}
-          <br/>
-      </Card.Text>
 
-          <Accordion>
-            <Card style={{ width: '30rem' }}>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                <Button variant="info"> Edit </Button>
-                </Accordion.Toggle>
-              </Card.Header>
-              <Accordion.Collapse eventKey="0">
-                <Card.Body> 
-                <LocationInput addLocation={(data)=> this.handleEdit(data) } />
-                <button onClick={() => this.handleOnClick()}> Remove </button>
-                </Card.Body>
-              </Accordion.Collapse>
-            </Card>
-          </Accordion>
-  
-    </Card.Body>
-    <Card.Footer>
-      <RoutesContainer location={location}/>
-    </Card.Footer>
 
-  </Card>
-  </CardGroup>
-  </div>
+      <div className="position-relative top-0 start-100 translate-middle" style={divStyle} >
+        <CardGroup style={{ width: '40rem' }}>
+          <Card>
+            <Card.Img style={{ width: '30rem' }} variant="top" src={location.image} />
+            <Card.Body>
+              <Card.Title>{location.placename}</Card.Title>
+              <Card.Text>
+                Cooordinates: {location.coordinates}
+                <br />
+                Country: {location.country}
+                <br />
+                City: {location.city}
+                <br />
+                Total Times Climbed: {location.climbs_total}
+                <br />
+              </Card.Text>
+
+              <Accordion>
+                <Card style={{ width: '30rem' }}>
+                  <Card.Header>
+                    <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                      <Button variant="info">Edit</Button>
+                    </Accordion.Toggle>
+                  </Card.Header>
+                  <Accordion.Collapse eventKey="0">
+                    <Card.Body>
+                      <LocationInput addLocation={(data) => this.handleEdit(data)} />
+                      <button onClick={() => this.handleOnClick()}>Remove </button>
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+              </Accordion>
+
+            </Card.Body>
+            <Card.Footer>
+              <RoutesContainer location={location} />
+            </Card.Footer>
+
+          </Card>
+        </CardGroup>
+      </div>
     );
   }
 };

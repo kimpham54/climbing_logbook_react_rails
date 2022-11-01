@@ -7,6 +7,8 @@ import Image from 'react-bootstrap/Image';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button';
+
 
 class Route extends Component {
 
@@ -16,7 +18,7 @@ class Route extends Component {
     console.log(this.props.route.location_id, this.props.route.id)
   }
 
-  handleEdit(data){
+  handleEdit(data) {
     data.id = this.props.route.id;
     this.props.editRoute(data);
   }
@@ -24,44 +26,42 @@ class Route extends Component {
 
   render() {
     return (
-      <div> 
+      <div>
         <li>
-          ID: {this.props.route.location_id}
+          Route Number: {this.props.route.location_id}
         </li>
         <li>
-          NAME: {this.props.route.name}
+          Route Name: {this.props.route.name}
         </li>
         <li>
-          GRADE: {this.props.route.grade}
+          Grade: {this.props.route.grade}
         </li>
         <li>
-          TYPE: {this.props.route.climbing_type}
+          Climbing Style: {this.props.route.climbing_type}
         </li>
         <li>
-          NOTES: {this.props.route.notes}
+          Notes: {this.props.route.notes}
         </li>
         <li>
-          DATE: {this.props.route.climb_date}
+          Date: {this.props.route.climb_date}
         </li>
         <li>
           <Container>
-          <Row>
-           <Col xs={5} md={5}>
-          <Image src={this.props.route.image} fluid />
-          </Col>
-          </Row>
+            <Row>
+              <Col xs={5} md={5}>
+                <Image src={this.props.route.image} fluid />
+              </Col>
+            </Row>
           </Container>
         </li>
         <li>
-          LINK: {this.props.route.url}
+          External Route Link: <a href={this.props.route.url}>Mountain Project</a>
         </li>
         <li>
-          TIMES CLIMBED: {this.props.route.times_climbed}
+          # Times Climbed: {this.props.route.times_climbed}
         </li>
-        <h5>Edit</h5>
-        <RouteInput addRoute={(data)=> this.handleEdit(data) } /> 
-        <br/>
-        <button onClick={this.handleOnClick}> Remove </button>
+        <Button variant="info">Edit</Button>
+
       </div>
     );
   }

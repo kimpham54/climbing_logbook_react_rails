@@ -8,7 +8,7 @@
 
 location1 = Location.create(placename: "red rock canyon", coordinates: "howe gelb", country: "United States", city: "Las Vegas", image:'https://i.imgur.com/nzCYmDD.jpg' )
 location2 = Location.create(placename: "flatirons", coordinates: "howe gelb", country: "United States", city: "Boulder", image:'https://i.imgur.com/Cmqt0F8.jpg' )
-location3 = Location.create(placename: "yosemite valley", coordinates: "howe gelb", country: "United States", city: "Yosemite National Park", image:'https://www.nps.gov/yose/planyourvisit/images/climber-on-el-cap-main-page-web.jpg' )
+location3 = Location.create(placename: "Yosemite National Park", coordinates: "37.756718, -119.596848", country: "United States", city: "Yosemite Valley", image:'https://www.nps.gov/yose/planyourvisit/images/climber-on-el-cap-main-page-web.jpg' )
 location4 = Location.create(placename: "indian creek", coordinates: "howe gelb", country: "United States", city: "Moab", image:'https://i.imgur.com/uP5zAVx.jpg' )
 
 Route.create([
@@ -50,12 +50,21 @@ Route.create([
 
 
 { location_id: 3, 
-	name:'central pillar of frenzy', 
+	name:'Central Pillar of Frenzy', 
 	grade: 5.8, 
 	climbing_type: 'trad', 
-	notes: 'good climb would do again',
+	notes: 'Good climb would do again. A little stressful but you know',
 	climb_date: '2020-01-02',
 	image: 'https://i.imgur.com/aFLuRme.jpg',
+	url:'https://www.mountainproject.com/route/105862930/central-pillar-of-frenzy' },
+
+	{ location_id: 3, 
+	name:'Southeast Buttress', 
+	grade: 5.6, 
+	climbing_type: 'trad', 
+	notes: 'Really nice views',
+	climb_date: '2020-01-02',
+	image: 'https://www.dankat.com/swhikes/photos/phcat8.JPG',
 	url:'https://www.mountainproject.com/route/105862930/central-pillar-of-frenzy' },
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-// import './index.css';
+
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
@@ -21,8 +21,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(locationsReducer, /* preloadedState, */ composeEnhancers(
-    applyMiddleware(thunk)
-  ));
+	applyMiddleware(thunk)
+));
 
 // const store = createStore(locationsReducer, composeWithDevTools(
 //   applyMiddleware(thunk),
@@ -35,7 +35,7 @@ const store = createStore(locationsReducer, /* preloadedState, */ composeEnhance
 
 ReactDOM.render(
 	<Provider store={store}>
-	<App />
+		<App />
 	</Provider>,
 	document.getElementById('root')
-	)
+)

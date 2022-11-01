@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 
 class RouteInput extends Component {
- 
- constructor(props) {
+
+  constructor(props) {
     super(props);
 
-  this.state = {
-    location_id: this.props.routelocationId,
-    name:'',
-    grade:'',
-    climbing_type:'',
-    notes:'',
-    climb_date:'',
-    image:'',
-    url:'',
-    times_climbed:''
+    this.state = {
+      location_id: this.props.routelocationId,
+      name: '',
+      grade: '',
+      climbing_type: '',
+      notes: '',
+      climb_date: '',
+      image: '',
+      url: '',
+      times_climbed: ''
     };
   };
 
@@ -32,28 +32,23 @@ class RouteInput extends Component {
     this.props.addRoute(this.state)
     this.setState({
       location_id: this.props.routelocationId,
-      name:'',
-      grade:'',
-      climbing_type:'',
-      notes:'',
-      climb_date:'',
-      image:'',
-      url:'',
-      times_climbed:''
+      name: '',
+      grade: '',
+      climbing_type: '',
+      notes: '',
+      climb_date: '',
+      image: '',
+      url: '',
+      times_climbed: ''
     });
   }
 
 
   render() {
     return (
-     <div>
+      <div>
         <form onSubmit={(event) => this.handleOnSubmit(event)} >
-          <input
-            type="text"
-            value={this.props.routelocationId}
-            placeholder={this.props.routelocationId}
-            name="name"
-            onChange={(event) => this.handleOnChange(event)} />
+
           <input
             type="text"
             value={this.state.name}
@@ -103,8 +98,8 @@ class RouteInput extends Component {
             name="times_climbed"
             onChange={(event) => this.handleOnChange(event)} />
 
-            <button>Submit</button>
-          
+          <button>Submit</button>
+
 
         </form>
       </div>

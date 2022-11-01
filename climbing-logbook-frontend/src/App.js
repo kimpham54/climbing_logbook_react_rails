@@ -5,13 +5,26 @@ import { connect } from 'react-redux';
 import { locations } from './actions/locations';
 import LocationsContainer from './containers/LocationsContainer';
 
+import background from "./img/m.jpg";
+
+
 class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <LocationsContainer/>
-      </div>
+      <div className="App" style={{
+        backgroundRepeat: 'fixed',
+        backgroundImage: `url(${background})`,
+        backgroundAttachment: 'fixed',
+        width: '1400px'
+      }
+      }><div className="girl" style={{
+
+        width: '1400px'
+      }
+      }>
+          <LocationsContainer /></div>
+      </div >
     );
   }
 }
