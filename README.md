@@ -13,3 +13,9 @@ climbing-logbook-frontend
 * make sure you have ruby, rails, node installed
 * mimemagic is deprecated => remove Gemfile and create new one with bundle install
 * export NODE_OPTIONS=--openssl-legacy-provider in frontend side then npm start
+
+
+worked with ruby 2.7.7 and node/npm version lts/fermium (14.something)
+rbenv install 2.7.7
+nvm use lts/carbon
+npm install
